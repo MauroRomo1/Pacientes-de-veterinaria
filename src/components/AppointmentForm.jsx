@@ -11,6 +11,8 @@ const AppointmentForm = () => {
     symptomsArea: "",
   });
 
+  const [quotes, setQuotes] = useState([]);
+
   const { namePet, nameOwner, appointmentDate, appointmentTime, symptomsArea } =
     formValues;
 
@@ -41,6 +43,7 @@ const AppointmentForm = () => {
         showConfirmButton: false,
         timer: 1500,
       });
+      setQuotes([...quotes, formValues]);
     }
   };
 
