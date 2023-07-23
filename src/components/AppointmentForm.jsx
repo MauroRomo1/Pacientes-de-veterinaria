@@ -39,6 +39,14 @@ const AppointmentForm = () => {
                 <Form.Control type="time" name="appointmentTime" />
               </Form.Group>
             </Row>
+            <Form.Group className="mb-3" controlId="symptomsArea">
+              <Form.Label>Sintomas</Form.Label>
+              <Form.Control
+                as="textarea"
+                rows={2}
+                placeholder="Sintomas de la mascota..."
+              />
+            </Form.Group>
 
             <div className="d-grid gap-2 col-6 mx-auto">
               <Button variant="primary" type="submit">
