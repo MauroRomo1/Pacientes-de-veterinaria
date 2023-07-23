@@ -1,5 +1,6 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
+import AppointmentForm from "./components/AppointmentForm";
 
 function App() {
   return (
@@ -9,7 +10,9 @@ function App() {
           Administrador pacientes de veterinaria
         </h3>
       </header>
-      <main></main>
+      <main>
+        <AppointmentForm />
+      </main>
       <footer>
         <h6 className="text-center my-3">
           &copy; Todos los derechos reservados
