@@ -140,7 +140,11 @@ const AppointmentForm = () => {
           </Col>
         </Row>
       </section>
-      <AppointmentList appointmentList={appointmentList} />
+      {appointmentList.length === 0 ? (
+        <h3 className="text-center my-4">Aún no hay citas</h3>
+      ) : (
+        <AppointmentList appointmentList={appointmentList} />
+      )}
     </>
   );
 };
