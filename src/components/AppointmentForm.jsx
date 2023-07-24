@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Form, Button, Row, Col } from "react-bootstrap";
 import Swal from "sweetalert2";
-import AppointmentCardsLists from "./AppointmentCardsLists";
+import AppointmentList from "./AppointmentList";
 
 const AppointmentForm = () => {
   const [formValues, setFormValues] = useState({
@@ -12,7 +12,7 @@ const AppointmentForm = () => {
     symptomsArea: "",
   });
 
-  const [quotes, setQuotes] = useState([]);
+  const [appointmentList, setAppointmentList] = useState([]);
 
   const { namePet, nameOwner, appointmentDate, appointmentTime, symptomsArea } =
     formValues;
@@ -44,7 +44,7 @@ const AppointmentForm = () => {
         showConfirmButton: false,
         timer: 1500,
       });
-      setQuotes([...quotes, formValues]);
+      setAppointmentList([...appointmentList, formValues]);
       setFormValues({
         namePet: "",
         nameOwner: "",
@@ -52,6 +52,7 @@ const AppointmentForm = () => {
         appointmentTime: "",
         symptomsArea: "",
       });
+      console.log(appointmentList);
     }
   };
 
@@ -140,11 +141,7 @@ const AppointmentForm = () => {
           </Col>
         </Row>
       </section>
-      {quotes.length <= 0 ? (
-        <h4 className=" text-center my-3">Aún no hay citas</h4>
-      ) : (
-        <AppointmentCardsLists />
-      )}
+      <AppointmentList appointmentList={appointmentList} />
     </>
   );
 };
