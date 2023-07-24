@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Form, Button, Row, Col } from "react-bootstrap";
 import Swal from "sweetalert2";
+import AppointmentCardsLists from "./AppointmentCardsLists";
 
 const AppointmentForm = () => {
   const [formValues, setFormValues] = useState({
@@ -44,92 +45,107 @@ const AppointmentForm = () => {
         timer: 1500,
       });
       setQuotes([...quotes, formValues]);
+      setFormValues({
+        namePet: "",
+        nameOwner: "",
+        appointmentDate: "",
+        appointmentTime: "",
+        symptomsArea: "",
+      });
     }
   };
 
   return (
-    <section className="container my-4">
-      <Row className="justify-content-center ">
-        <Col xs={11} md={10} lg={9} className="py-3 shadow formContainer">
-          <h6>Llenar el formulario para crear una cita</h6>
-          <hr />
-          <Form onSubmit={handleSubmit}>
-            <Form.Group className="mb-3" controlId="namePet">
-              <Form.Label>Nombre de la mascota</Form.Label>
-              <Form.Control
-                type="text"
-                name="namePet"
-                value={namePet}
-                required
-                onChange={handleChange}
-              />
-            </Form.Group>
-
-            <Form.Group className="mb-3" controlId="nameOwner">
-              <Form.Label>Nombre de dueño/a</Form.Label>
-              <Form.Control
-                type="text"
-                name="nameOwner"
-                value={nameOwner}
-                required
-                onChange={handleChange}
-              />
-            </Form.Group>
-
-            <Row className="mb-3">
-              <Form.Group
-                className="mb-3"
-                as={Col}
-                md={6}
-                controlId="appointmentDate"
-              >
-                <Form.Label>Fecha</Form.Label>
+    <>
+      <section className="container my-4">
+        <Row className="justify-content-center ">
+          <Col xs={11} md={10} lg={9} className="py-3 shadow formContainer">
+            <h6>Llenar el formulario para crear una cita</h6>
+            <hr />
+            <Form onSubmit={handleSubmit}>
+              <Form.Group className="mb-3" controlId="namePet">
+                <Form.Label>Nombre de la mascota</Form.Label>
                 <Form.Control
-                  type="date"
-                  name="appointmentDate"
-                  value={appointmentDate}
+                  type="text"
+                  name="namePet"
+                  value={namePet}
                   required
                   onChange={handleChange}
                 />
               </Form.Group>
-              <Form.Group
-                className="mb-3"
-                as={Col}
-                md={6}
-                controlId="appointmentTime"
-              >
-                <Form.Label>Hora</Form.Label>
+
+              <Form.Group className="mb-3" controlId="nameOwner">
+                <Form.Label>Nombre de dueño/a</Form.Label>
                 <Form.Control
-                  type="time"
-                  name="appointmentTime"
-                  value={appointmentTime}
+                  type="text"
+                  name="nameOwner"
+                  value={nameOwner}
                   required
                   onChange={handleChange}
                 />
               </Form.Group>
-            </Row>
-            <Form.Group className="mb-3" controlId="symptomsArea">
-              <Form.Label>Sintomas</Form.Label>
-              <Form.Control
-                as="textarea"
-                name="symptomsArea"
-                value={symptomsArea}
-                required
-                onChange={handleChange}
-                rows={2}
-                placeholder="Sintomas de la mascota..."
-              />
-            </Form.Group>
 
-            <div className="d-grid gap-2 col-6 mx-auto">
-              <Button variant="primary" type="submit">
-                Agregar cita
-              </Button>
-            </div>
-          </Form>
-        </Col>
-      </Row>
-    </section>
+              <Row className="mb-3">
+                <Form.Group
+                  className="mb-3"
+                  as={Col}
+                  md={6}
+                  controlId="appointmentDate"
+                >
+                  <Form.Label>Fecha</Form.Label>
+                  <Form.Control
+                    type="date"
+                    name="appointmentDate"
+                    min="2023-07-31"
+                    value={appointmentDate}
+                    required
+                    onChange={handleChange}
+                  />
+                </Form.Group>
+                <Form.Group
+                  className="mb-3"
+                  as={Col}
+                  md={6}
+                  controlId="appointmentTime"
+                >
+                  <Form.Label>Hora</Form.Label>
+                  <Form.Control
+                    type="time"
+                    name="appointmentTime"
+                    value={appointmentTime}
+                    required
+                    onChange={handleChange}
+                  />
+                </Form.Group>
+              </Row>
+              <Form.Group className="mb-3" controlId="symptomsArea">
+                <Form.Label>Sintomas</Form.Label>
+                <Form.Control
+                  as="textarea"
+                  name="symptomsArea"
+                  value={symptomsArea}
+                  required
+                  onChange={handleChange}
+                  rows={2}
+                  placeholder="Sintomas de la mascota..."
+                />
+              </Form.Group>
+
+              <div className="d-grid gap-2 col-6 mx-auto">
+                <Button variant="primary" type="submit">
+                  Agregar cita
+                </Button>
+              </div>
+            </Form>
+          </Col>
+        </Row>
+      </section>
+      {quotes.length <= 0 ? (
+        <h4 className=" text-center my-3">Aún no hay citas</h4>
+      ) : (
+        <AppointmentCardsLists />
+      )}
+    </>
   );
 };
 
