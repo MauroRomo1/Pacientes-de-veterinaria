@@ -5,6 +5,7 @@ import AppointmentList from "./AppointmentList";
 
 const AppointmentForm = () => {
   const [formValues, setFormValues] = useState({
+    id: null,
     namePet: "",
     nameOwner: "",
     appointmentDate: "",
@@ -19,6 +20,11 @@ const AppointmentForm = () => {
 
   const handleChange = (e) => {
     setFormValues({ ...formValues, [e.target.name]: e.target.value });
+  };
+
+  const createData = (data) => {
+    data.id = Date.now();
+    setAppointmentList([...appointmentList, formValues]);
   };
 
   const handleSubmit = (e) => {
@@ -44,8 +50,9 @@ const AppointmentForm = () => {
         showConfirmButton: false,
         timer: 1500,
       });
-      setAppointmentList([...appointmentList, formValues]);
+      createData(formValues);
       setFormValues({
+        id: null,
         namePet: "",
         nameOwner: "",
         appointmentDate: "",
