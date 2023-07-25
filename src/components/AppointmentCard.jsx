@@ -1,6 +1,6 @@
 import { Form } from "react-bootstrap";
 
-const AppointmentCard = ({ appointment }) => {
+const AppointmentCard = ({ appointment, deleteAppointment }) => {
   return (
     <article className="col">
       <div className="card shadow">
@@ -36,7 +36,15 @@ const AppointmentCard = ({ appointment }) => {
           </Form.Group>
         </div>
         <div className="card-footer d-grid">
-          <button className="btn btn-danger">Borrar</button>
+          <button
+            className="btn btn-danger"
+            type="button"
+            onClick={() => {
+              deleteAppointment(appointment);
+            }}
+          >
+            Borrar
+          </button>
         </div>
       </div>
     </article>

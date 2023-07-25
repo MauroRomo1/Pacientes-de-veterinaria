@@ -36,6 +36,13 @@ const AppointmentForm = () => {
     setAppointmentList([...appointmentList, formValues]);
   };
 
+  const deleteAppointment = (appointmentDelete) => {
+    let listFilter = appointmentList.filter(
+      (itemAppointment) => appointmentDelete.id !== itemAppointment.id
+    );
+    setAppointmentList(listFilter);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -159,7 +166,10 @@ const AppointmentForm = () => {
       {appointmentList.length === 0 ? (
         <h3 className="text-center my-4">Aún no hay citas</h3>
       ) : (
-        <AppointmentList appointmentList={appointmentList} />
+        <AppointmentList
+          appointmentList={appointmentList}
+          deleteAppointment={deleteAppointment}
+        />
       )}
     </>
   );
