@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Form, Button, Row, Col } from "react-bootstrap";
 import Swal from "sweetalert2";
 import AppointmentList from "./AppointmentList";
@@ -13,10 +13,19 @@ const AppointmentForm = () => {
     symptomsArea: "",
   });
 
-  const [appointmentList, setAppointmentList] = useState([]);
+  const appointmentLocalStorage =
+    JSON.parse(localStorage.getItem("listaCitas")) || [];
+
+  const [appointmentList, setAppointmentList] = useState(
+    appointmentLocalStorage
+  );
 
   const { namePet, nameOwner, appointmentDate, appointmentTime, symptomsArea } =
     formValues;
+
+  useEffect(() => {
+    localStorage.setItem("listaCitas", JSON.stringify(appointmentList));
+  }, [appointmentList]);
 
   const handleChange = (e) => {
     setFormValues({ ...formValues, [e.target.name]: e.target.value });
