@@ -164,7 +164,15 @@ const AppointmentForm = () => {
         </Row>
       </section>
       {appointmentList.length === 0 ? (
-        <h3 className="text-center my-4">Aún no hay citas</h3>
+        <h3 className="text-center my-4">
+          Aún no hay citas
+          <img
+            src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Animals/Snail.png"
+            className="iconSnail"
+            width="50"
+            height="50"
+          />
+        </h3>
       ) : (
         <AppointmentList
           appointmentList={appointmentList}

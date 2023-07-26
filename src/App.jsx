@@ -6,9 +6,14 @@ function App() {
   return (
     <>
       <header>
-        <h3 className="text-center my-3">
-          Administrador pacientes de veterinaria
-        </h3>
+        <h4 className="text-center my-3">
+          Administracion pacientes de veterinaria
+          <img
+            src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Animals/Dog%20Face.png"
+            className="iconDogFace"
+          />
+        </h4>
+        <hr />
       </header>
       <main>
         <AppointmentForm />
