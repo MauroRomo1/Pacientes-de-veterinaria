@@ -83,7 +83,7 @@ const AppointmentForm = () => {
       <section className="container my-4">
         <Row className="justify-content-center ">
           <Col xs={11} md={10} lg={9} className="py-3 shadow formContainer">
-            <h6>Llenar el formulario para crear una cita</h6>
+            <h6 className="text-center">formulario para crear una cita</h6>
             <hr />
             <Form onSubmit={handleSubmit}>
               <Form.Group className="mb-3" controlId="namePet">
