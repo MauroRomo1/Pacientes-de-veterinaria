@@ -1,6 +1,7 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import AppointmentForm from "./components/AppointmentForm";
+import Banner from "./components/Banner";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         </h5>
       </header>
       <main>
+        <Banner />
         <AppointmentForm />
       </main>
       <footer>
