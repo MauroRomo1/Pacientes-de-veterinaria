@@ -11,26 +11,18 @@ const AppointmentCard = ({ appointment, deleteAppointment }) => {
         <div className="card-body">
           <Form.Group className="mb-3">
             <Form.Label>Fecha:</Form.Label>
-            <Form.Control
-              type="date"
-              value={appointment.appointmentDate}
-              disabled
-            />
+            <Form.Control type="date" value={appointment.quoteDate} disabled />
           </Form.Group>
           <Form.Group className="mb-3">
             <Form.Label>Hora:</Form.Label>
-            <Form.Control
-              type="time"
-              value={appointment.appointmentTime}
-              disabled
-            />
+            <Form.Control type="time" value={appointment.quoteTime} disabled />
           </Form.Group>
           <Form.Group className="mb-3">
             <Form.Label>Sintomas:</Form.Label>
             <Form.Control
               as={"textarea"}
-              rows={2}
-              value={appointment.symptomsArea}
+              rows={3}
+              value={appointment.symptomsPet}
               disabled
             />
           </Form.Group>
