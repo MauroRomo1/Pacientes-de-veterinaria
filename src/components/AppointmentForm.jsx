@@ -24,10 +24,8 @@ const AppointmentForm = () => {
   }, [appointmentList]);
 
   const onSubmit = (createdQuotes) => {
-    console.log("Formulario enviado");
+    createdQuotes.id = Date.now();
     setAppointmentList([...appointmentList, createdQuotes]);
-    console.log(appointmentList);
-    console.log(createdQuotes);
   };
 
   const deleteAppointment = (appointmentDelete) => {
