@@ -3,7 +3,7 @@
  Pacientes de veterinaria
 </h1>
 
-en esta pagina tendremos un formulario eu cual nos pide los siguientes datos nombre de la mascota, nombre del dueño/a, fecha, hora y sintomas de la mascota. Al llenar correctamente el formulario este creara una cita/tarjeta con los datos cargados la cual se mostrara en pantalla con todos los detalles, tambien tendra la opcion de borrar dicha cita/tarjeta
+en esta pagina tendremos un formulario eu cual nos pide los siguientes datos nombre de la mascota, nombre del dueño/a, fecha, hora y sintomas de la mascota. Al llenar correctamente el formulario y pasar las validaciones hechas con [React-hook-form](https://www.react-hook-form.com/) este creara una cita/tarjeta con los datos cargados, la cual se mostrara en pantalla con todos los detalles, tambien tendra la opcion de borrar dicha cita/tarjeta
 ![image](https://github.com/MauroRomo1/Pacientes-de-veterinaria/assets/82526247/0b97efbb-0157-4777-ad4b-d12c12bc054b)
 
 
