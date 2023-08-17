@@ -127,6 +127,10 @@ const AppointmentForm = () => {
                     name="quoteDate"
                     {...register("quoteDate", {
                       required: "La fecha de la cita es obligatorio.",
+                      min: {
+                        value: new Date().toISOString().split("T")[0],
+                        message: "La fecha debe ser hoy o después.",
+                      },
                     })}
                   />
                   <Form.Text className="text-danger">
