@@ -25,15 +25,30 @@ const AppointmentForm = () => {
   }, [appointmentList]);
 
   const onSubmit = (createdQuotes) => {
-    createdQuotes.id = Date.now();
-    setAppointmentList([...appointmentList, createdQuotes]);
-    reset();
-    Swal.fire({
-      icon: "success",
-      title: "Cita creada",
-      showConfirmButton: false,
-      timer: 1500,
+    const citaEncontrada = appointmentList.find((quote) => {
+      quote.quoteDate === createdQuotes.quoteDate &&
+        quote.quoteTime === createdQuotes.quoteTime;
+      return quote;
     });
+
+    if (citaEncontrada) {
+      Swal.fire({
+        icon: "error",
+        title: "<h5>Ya hay una cita con esa fecha y hora.</h5>",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    } else {
+      createdQuotes.id = Date.now();
+      setAppointmentList([...appointmentList, createdQuotes]);
+      reset();
+      Swal.fire({
+        icon: "success",
+        title: "Cita creada",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    }
   };
 
   const deleteAppointment = (appointmentDelete) => {
