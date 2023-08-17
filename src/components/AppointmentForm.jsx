@@ -9,6 +9,7 @@ const AppointmentForm = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
 
@@ -24,10 +25,30 @@ const AppointmentForm = () => {
   }, [appointmentList]);
 
   const onSubmit = (createdQuotes) => {
-    console.log("Formulario enviado");
-    setAppointmentList([...appointmentList, createdQuotes]);
-    console.log(appointmentList);
-    console.log(createdQuotes);
+    const citaEncontrada = appointmentList.find((quote) => {
+      quote.quoteDate === createdQuotes.quoteDate &&
+        quote.quoteTime === createdQuotes.quoteTime;
+      return quote;
+    });
+
+    if (citaEncontrada) {
+      Swal.fire({
+        icon: "error",
+        title: "<h5>Ya hay una cita con esa fecha y hora.</h5>",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    } else {
+      createdQuotes.id = Date.now();
+      setAppointmentList([...appointmentList, createdQuotes]);
+      reset();
+      Swal.fire({
+        icon: "success",
+        title: "Cita creada",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    }
   };
 
   const deleteAppointment = (appointmentDelete) => {
@@ -106,6 +127,10 @@ const AppointmentForm = () => {
                     name="quoteDate"
                     {...register("quoteDate", {
                       required: "La fecha de la cita es obligatorio.",
+                      min: {
+                        value: new Date().toISOString().split("T")[0],
+                        message: "La fecha debe ser hoy o después.",
+                      },
                     })}
                   />
                   <Form.Text className="text-danger">
